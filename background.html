@@ -1,0 +1,11 @@
+<html>
+<head>
+<script>
+console.log("Background.html"); // This gets displayed. O.K.
+chrome.browserAction.onClicked.addListener(function(tab) {
+	chrome.tabs.executeScript(null, {file: "content.js"})
+});
+
+</script>
+</head>
+</html>
