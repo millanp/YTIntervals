@@ -1,4 +1,5 @@
 // requires jQuery
+// intervals list defined in content.js
 function enableIntervalSelection() {
     var intervalStart;
     var markerUpdateInterval;
@@ -29,8 +30,9 @@ function enableIntervalSelection() {
     }
 
     function stopInterval() {
-        intervalStart = null;
+        intervals.push(new Interval(intervalStart, videoElem.currentTime));
         clearInterval(markerUpdateInterval);
+        intervalStart = null;
     }
 
     $('.ytp-scrubber-button').css('transform', 'none');

@@ -7,6 +7,7 @@ WORKFLOW:
 */
 var framesPerJump;
 var secondsPerFrame;
+var intervals = []; // a list of objects in the form {startTime: int, endTime: int}
 
 var videoElem;
 chrome.runtime.onMessage.addListener(
@@ -21,3 +22,10 @@ chrome.runtime.onMessage.addListener(
         }
     }
 );
+
+class Interval {
+    constructor(startTime, endTime) {
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+}
