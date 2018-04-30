@@ -1,16 +1,15 @@
-// framesPerJump and secondsPerFrame are defined in content.js
-function enableFrameJumping() {
+function enableFrameJumping(sharedData) {
     var videoElem = document.querySelector('video');
     var prevTime = 0;
 
-    function setFramesPerJump() {
+    function setFramesPerJump(sharedData) {
         var tmp = parseInt(prompt("Frames to jump: "));
         if (tmp) {
-            framesPerJump = tmp;
+            sharedData.framesPerJump = tmp;
         }
     }
 
-    setFramesPerJump();
+    setFramesPerJump(sharedData);
     prevTime = videoElem.currentTime;
     $('.ytp-progress-bar').click(function() {
         prevTime = videoElem.currentTime;
@@ -19,14 +18,14 @@ function enableFrameJumping() {
     $(document).keydown(function(e) {
         if (e.which === 190 || e.which === 188) {
             // period or comma was pressed
-            if (!secondsPerFrame) {
+            if (!sharedData.secondsPerFrame) {
                 var timeSkip = videoElem.currentTime - prevTime;
-                secondsPerFrame = Math.abs(timeSkip);
+                sharedData.secondsPerFrame = Math.abs(timeSkip);
             }
             if (e.which === 190) {
-                videoElem.currentTime = prevTime + secondsPerFrame * framesPerJump;
+                videoElem.currentTime = prevTime + sharedData.secondsPerFrame * framesPerJump;
             } else {
-                videoElem.currentTime = prevTime - secondsPerFrame * framesPerJump;
+                videoElem.currentTime = prevTime - sharedData.secondsPerFrame * framesPerJump;
             }
             prevTime = videoElem.currentTime;
         } else if (e.which === 70 && e.ctrlKey && e.altKey) {
@@ -34,5 +33,4 @@ function enableFrameJumping() {
             setFramesPerJump();
         }
     });
-    return secondsPerFrame;
 }
