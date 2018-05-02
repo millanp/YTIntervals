@@ -7,6 +7,7 @@ chrome.browserAction.onClicked.addListener(function() {
     extensionActive = !extensionActive;
     if (extensionActive) {
         chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+            masterIntervals["url"] = tabs[0].url; 
             chrome.tabs.sendMessage(tabs[0].id, { action: "start" }, function(response) {
 
             });
