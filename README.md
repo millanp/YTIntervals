@@ -28,20 +28,21 @@ file will contain the following:
 	* Toggle the button on the top right-hand corner to enable developer mode.
 	* Click on "Load Unpacked" (top middle of the page) and select the
       directory you cloned the repo into. You should get an extension
-      icon (of a "scraper") at the top right hand that says
-      "YTInterval". 
+      button with a "scraper"icon (<img src="NScrape.png" width="12">) at the
+      top right hand that says "YTIntervals" when you hover over it. 
   
 ## Use
   1. Go to any YouTube video and pause it. The tool works whether the
      video is paused or running. However, it is usually much easier to
      precisely label a paused video by moving the scrubber/slider around.
   2. For each new named segment you want to add, click the extension
-     icon. You will get a prompt for a segment name.
+     button <img src="NScrape.png" width="12">. Enter the name of the
+     new segment at the prompt.
   		* Now mark the intervals corresponding to the segment. For each interval: 
   			* Move the scrubber to where you want your interval to
 	  	start. Press ``shift``
   			* Move the scrubber to the end of the interval. Press ```Shift```
-	  	again. YTInterval will show you the interval you just marked
+	  	again. YTIntervals will show you the interval you just marked
 	  	using a white rectangle along the scrubber.
   		* Just click on the white rectangle for any interval to delete it.
   5. When you are done labeling, use ``Ctrl-Shift-s`` to save an
