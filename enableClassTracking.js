@@ -1,6 +1,6 @@
 function enableClassTracking(sharedData, onClassChanged) {
     function setClass() {
-        var nextClass = prompt("Next segment name:");
+        var nextClass = prompt("Next segment-group name:");
         if (nextClass) {
             chrome.runtime.sendMessage({ action: "setClass", class: nextClass, prevIntervals: sharedData.intervals }, onClassChanged);
         }
