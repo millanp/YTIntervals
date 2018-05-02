@@ -25,7 +25,8 @@ chrome.runtime.onMessage.addListener(
             });
             enableIntervalSelection(sharedData, Colors);
             enableDownloadHotkey(sharedData, function() {
-                sharedData.intervals[sharedData.intervals.length - 1].active = false;
+                if (sharedData.intervals.length > 0)
+                    sharedData.intervals[sharedData.intervals.length - 1].active = false;
             });
         } else if (request.action == "stop") {
 

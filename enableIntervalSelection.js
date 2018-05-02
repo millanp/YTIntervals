@@ -34,10 +34,10 @@ function drawInterval(interval, idx) {
         zIndex: "1000" // cannot click to delete yet
     });
     startMarker.click(function() {
-        if (sharedData.intervals[idx].active) {
+        if (interval.active) {
             stopInterval();
         }
-        sharedData.intervals.splice(idx, 1);
+        sharedData.intervals.splice(sharedData.intervals.indexOf(interval), 1);
         $(this).remove();
     });
     $('body').append(startMarker);
@@ -91,7 +91,7 @@ function stopInterval() {
 function enableIntervalSelection(sharedData, Colors) {
     sharedData = sharedData;
     Colors = Colors;
-    intervalColor = Colors.random();
+    intervalColor = nextColor();
     videoElem = document.querySelector('video');
     totalScrubLength = $('.ytp-progress-list')[0].getBoundingClientRect().width
     scrubberPos = $('.ytp-progress-bar')[0].getBoundingClientRect()
@@ -121,7 +121,7 @@ function enableIntervalSelection(sharedData, Colors) {
 
 function newIntervalClass(sharedData) {
     sharedData = sharedData;
-    intervalColor = Colors.random();
+    intervalColor = nextColor();
     $('.interval').remove();
     drawIntervals();
 }
