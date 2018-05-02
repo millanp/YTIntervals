@@ -4,10 +4,10 @@ var masterIntervals = {};
 
 // Supposed to Called when the user clicks on the browser action icon.
 chrome.browserAction.onClicked.addListener(function() {
-    extensionActive = !extensionActive;
+    extensionActive = true; // quick bug fix to two-click problem
     if (extensionActive) {
         chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-            masterIntervals["url"] = tabs[0].url; 
+            masterIntervals["url"] = tabs[0].url;
             chrome.tabs.sendMessage(tabs[0].id, { action: "start" }, function(response) {
 
             });
