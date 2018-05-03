@@ -29,7 +29,7 @@ chrome.runtime.onMessage.addListener(
                     sharedData.intervals[sharedData.intervals.length - 1].active = false;
             });
         } else if (request.action == "stop") {
-
+            window.location.reload();
         }
     }
 );

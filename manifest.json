@@ -6,7 +6,8 @@
     "version": "1.0",
 
     "browser_action": {
-        "default_icon": "NScrape.png"
+        "default_icon": "NScrape.png",
+        "default_popup": "popup.html"
     },
     "permissions": [
         "tabs", "https://www.google.com/*",
