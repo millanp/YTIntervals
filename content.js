@@ -1,11 +1,3 @@
-/*
-WORKFLOW: 
-1. User clicks the extension icon to activate the listeners
-2. User enters Ctrl-Q, then types in the class name
-3. User clicks to a frame, hits tilde to download, continues on until entire pass is done
-4. Repeat steps 2-3
-*/
-
 var sharedData = {
     videoElem: document.querySelector('video'),
     framesPerJump: 1,
@@ -30,6 +22,8 @@ chrome.runtime.onMessage.addListener(
             });
         } else if (request.action == "stop") {
             window.location.reload();
+        } else if (request.action == "newClassNoSave") {
+            setClass(sharedData);
         }
     }
 );

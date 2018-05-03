@@ -67,6 +67,17 @@ chrome.runtime.onMessage.addListener(
             }
         } else if (request.action == "getToggleButtonText") {
             sendResponse({ text: getToggleButtonText() });
+        } else if (request.action == "setMasterIntervals") {
+            masterIntervals = JSON.parse(request.jsonString);
+            className = null; // This will prevent the following call to newClass from saving any data
+            if (extensionActive) {
+                chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+                    chrome.tabs.sendMessage(tabs[0].id, { action: "newClass" });
+                    // The above will prompt content.js to go through the usual class change procedure
+                    // WITHOUT saving the already-drawn intervals
+                    // thus effectively performing a "reset"
+                });
+            }
         }
     }
 );
