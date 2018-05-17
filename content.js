@@ -22,8 +22,27 @@ chrome.runtime.onMessage.addListener(
             });
         } else if (request.action == "stop") {
             window.location.reload();
-        } else if (request.action == "newClassNoSave") {
+        } else if (request.action == "newClass") {
             setClass(sharedData);
+        } else if (request.action == "setMasterIntervals") {
+            var fileChooser = document.createElement('input');
+            fileChooser.type = 'file';
+            fileChooser.onchange = function() {
+                var file = fileChooser.files[0];
+                // process file
+                var fileReader = new FileReader();
+                fileReader.onload = function(event) {
+                    var masterIntervals = JSON.parse(event.target.result);
+                    chrome.runtime.sendMessage({ action: "setMasterIntervalsJSON", JSONData: masterIntervals }, function(response) {
+                        if (request.isActive)
+                            setClass(sharedData);
+                    });
+                }
+                fileReader.readAsText(file);
+            }
+            console.log('hi');
+            fileChooser.click();
+            console.log('hoo');
         }
     }
 );

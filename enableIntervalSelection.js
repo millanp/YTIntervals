@@ -120,6 +120,7 @@ function enableIntervalSelection(sharedData, Colors) {
 }
 
 function newIntervalClass(sharedData) {
+    console.log('new interval class');
     sharedData = sharedData;
     intervalColor = nextColor();
     $('.interval').remove();
